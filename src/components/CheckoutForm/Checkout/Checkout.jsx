@@ -17,7 +17,7 @@ import PaymentForm from "../PaymentForm";
 
 const steps = ["Shipping Address", "Payment details"];
 
-const Checkout = ({ cart }) => {
+const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
   const [activeStep, setActiveStep] = useState(0);
   const [checkoutToken, setCheckoutToken] = useState(null);
   const [shipppingData, setShippingData] = useState({});
@@ -54,6 +54,9 @@ const Checkout = ({ cart }) => {
       <PaymentForm
         shipppingData={shipppingData}
         checkoutToken={checkoutToken}
+        nextStep={nextStep}
+        backStep={backStep}
+        onCaptureCheckout={onCaptureCheckout}
       />
     );
   return (
