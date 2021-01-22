@@ -20,7 +20,7 @@ const steps = ["Shipping Address", "Payment details"];
 const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
   const [activeStep, setActiveStep] = useState(0);
   const [checkoutToken, setCheckoutToken] = useState(null);
-  const [shipppingData, setShippingData] = useState({});
+  const [shippingData, setShippingData] = useState({});
 
   const classes = useStyles();
 
@@ -49,10 +49,15 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
 
   const Form = () =>
     activeStep === 0 ? (
-      <AddressForm checkoutToken={checkoutToken} next={next} />
+      <AddressForm
+        checkoutToken={checkoutToken}
+        setShippingData={setShippingData}
+        next={next}
+      />
     ) : (
       <PaymentForm
-        shipppingData={shipppingData}
+        shippingData={shippingData}
+        nextStep={nextStep}
         checkoutToken={checkoutToken}
         nextStep={nextStep}
         backStep={backStep}
