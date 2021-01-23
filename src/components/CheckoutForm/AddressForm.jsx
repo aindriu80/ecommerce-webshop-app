@@ -38,13 +38,10 @@ const AddressForm = ({ checkoutToken, next }) => {
     label: `${sO.description}- (${sO.price.formatted_with_symbol})`,
   }));
 
-  console.log(shippingOptions);
-
   const fetchShippingCountries = async (checkoutTokenId) => {
     const { countries } = await commerce.services.localeListShippingCountries(
       checkoutTokenId
     );
-    console.log(countries);
     setShippingCountries(countries);
     setShippingCountry(Object.keys(countries)[0]);
   };
@@ -158,7 +155,7 @@ const AddressForm = ({ checkoutToken, next }) => {
           </Grid>
           <br />
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <Button component={Link} to="/cart" variant="outlined">
+            <Button component={Link} variant="outlined" to="/cart">
               Back to Cart
             </Button>
             <Button type="submit" variant="contained" color="primary">
